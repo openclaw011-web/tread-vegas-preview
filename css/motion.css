@@ -1,0 +1,37 @@
+/* Motion layer for the multi-page theme — additive, light theme kept. */
+
+/* scroll reveal */
+[data-rv]{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.22,.6,.36,1),transform .8s cubic-bezier(.22,.6,.36,1)}
+[data-rv].in{opacity:1;transform:none}
+
+/* ken-burns hero */
+.hero-bg img{animation:kb 20s ease-in-out infinite alternate}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.12)}}
+.hero-bg{transition:transform .2s linear}
+
+/* nav underline + scrolled shadow */
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--accent);transition:width .3s cubic-bezier(.22,.6,.36,1)}
+.nav-links a:hover::after{width:100%}
+header{transition:background .3s,box-shadow .3s,border-color .3s}
+header.scrolled{box-shadow:0 8px 30px rgba(37,16,47,.08)}
+
+/* cards */
+.card{transition:transform .3s cubic-bezier(.22,.6,.36,1),box-shadow .3s cubic-bezier(.22,.6,.36,1)}
+.card:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(37,16,47,.12)}
+.card .ic{transition:transform .4s,background .3s,color .3s}
+.card:hover .ic{transform:rotate(-8deg) scale(1.08);background:var(--accent);color:#fff}
+
+/* hero CTA subtle pulse */
+.hero .btn-accent{animation:pulseGlow 3s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 8px 22px rgba(238,89,43,.28)}50%{box-shadow:0 8px 30px rgba(238,89,43,.5)}}
+
+/* gallery */
+.gallery a{overflow:hidden;border-radius:14px}
+.gallery img{transition:transform .6s cubic-bezier(.22,.6,.36,1),filter .4s}
+.gallery a:hover img{transform:scale(1.08)}
+
+@media(prefers-reduced-motion:reduce){
+  [data-rv]{opacity:1;transform:none;transition:none}
+  *{animation:none!important}
+}
